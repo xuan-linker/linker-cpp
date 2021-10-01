@@ -1,2 +1,4 @@
 ﻿# Project exclude paths
 /cmake-build-debug/
+CMakeLists.txt
+*.xml
