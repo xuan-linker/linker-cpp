@@ -42,6 +42,7 @@ bool InitLinklist(Linklist &L) {
 bool reversalLinklist(Linklist &L) {
     if (L && L->next != NULL) {
         Linklist next = L->next;
+        // 先递归在打印 则反向输出
         reversalLinklist(next);
         cout << L->data << ends;
     }
