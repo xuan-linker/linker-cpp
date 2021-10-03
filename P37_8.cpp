@@ -89,7 +89,6 @@ int main() {
     L2->next == NULL;
     InsertLNode2(L2);
     Print(L2);
-
     vector<int> v =findSameLNode(L1,L2);
     for (int i = 0; i < v.size(); ++i) {
         cout<<v.at(i)<<ends;
