@@ -103,12 +103,66 @@ int Index(SString S, SString T) {
     return -1;
 }
 
+//朴素模式匹配算法
+int Index_1(SString S, SString T) {
+    int i = 0, j = 0;
+    while (i < S.length && j < T.length) {
+        if (S.ch[i] == T.ch[j]) { //逐个比较
+            ++i;
+            ++j;
+        } else {
+            i = i - j + 1; //回退并重置，i=i+1,j=0
+            j = 0;
+        }
+    }
+    if (j >= T.length) { //若比较完毕
+        return i - T.length;
+    } else {
+        return -1;
+    }
+}
+
 void Print(SString S) {
     for (int i = 0; i < S.length; ++i) {
         cout << S.ch[i] << ends;
     }
     cout << endl;
 }
+//
+////模式串T的next数组
+//void GetNext(SString T, int next[]) {
+//    int i = 0, j = -1;
+//    next[0] = -1;
+//    while (i < T.length - 1) {
+//        if (j == -1 || T.ch[i] == T.ch[j]) {
+//            ++i;
+//            ++j;
+//            next[i] = j;
+//        } else {
+//            j = next[j];
+//        }
+//    }
+//}
+//
+//int Kmp(SString S, SString T) {
+//    int i = 0, j = -1;
+//    int next[T.length];
+//    GetNext(T, next);
+//    while (i < S.length && i < T.length) {
+//        if (j == -1 || S.ch[i] == T.ch[j]) {
+//            i++;
+//            j++;
+//        } else {
+//            j = next[j];
+//        }
+//    }
+//    if (j >= T.length) {
+//        return i - T.length;
+//    } else {
+//        return 0;
+//    }
+//
+//}
 
 int main() {
     cout << "hello world" << endl;
@@ -130,5 +184,9 @@ int main() {
 
     int res = Index(S, T);
     cout << res << endl;
+    int res2 = Index_1(S, T);
+    cout << res2 << endl;
+
+
     return 0;
 }
